@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-const int pinosAnalogicos[] = {36, 39, 34, 35, 32, 33}; // VP VN D34 D35 D32 D33
+const int pinosAnalogicos[] = {34, 35, 32, 33, 25, 26}; // D34 D35 D32 D33 D25 D26
 const int numPinos = 6; 
 
 void setup() {
@@ -27,5 +27,5 @@ void loop() {
 
   Serial.println();
   
-  delay(20); 
+  delay(1); 
 }
