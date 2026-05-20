@@ -32,22 +32,20 @@ def read_esp32_data(sequencia, port="COM16", baudrate=9600, limiar=4000):
                             tecla_keyboard = sequencia[tecla]
                             pressionada_atual = valor < limiar
                             
-                            # Verifica se o estado mudou
-                            if pressionada_atual != estado_teclas_anterior[tecla]:
-                                if pressionada_atual:
-                                    ser_pressionada.append(tecla_keyboard)
-                                    # Tecla foi pressionada (valor abaixo do limiar)
-                                    teclas_pressionadas[tecla] = True
-                                    # print(f"Tecla {tecla} ({tecla_keyboard}) PRESSIONADA - Valor: {valor}")
-                                else:
-                                    # Tecla foi solta (valor acima do limiar)
-                                    keyboard.release(tecla_keyboard)
-                                    if tecla in teclas_pressionadas:
-                                        del teclas_pressionadas[tecla]
-                                    # print(f"Tecla {tecla} ({tecla_keyboard}) SOLTA - Valor: {valor}")
-                                
-                                # Atualiza o estado anterior
-                                estado_teclas_anterior[tecla] = pressionada_atual
+                            if pressionada_atual:
+                                ser_pressionada.append(tecla_keyboard)
+                                # Tecla foi pressionada (valor abaixo do limiar)
+                                teclas_pressionadas[tecla] = True
+                                # print(f"Tecla {tecla} ({tecla_keyboard}) PRESSIONADA - Valor: {valor}")
+                            else:
+                                # Tecla foi solta (valor acima do limiar)
+                                keyboard.release(tecla_keyboard)
+                                if tecla in teclas_pressionadas:
+                                    del teclas_pressionadas[tecla]
+                                # print(f"Tecla {tecla} ({tecla_keyboard}) SOLTA - Valor: {valor}")
+                            
+                            # Atualiza o estado anterior
+                            estado_teclas_anterior[tecla] = pressionada_atual
 
                     keyboard.press(ser_pressionada)
             
@@ -90,5 +88,5 @@ sequencia_jogo = {
     "T6": "a"
 }
 if __name__ == "__main__":
-    read_esp32_data(sequencia_brilha_brilha, port="COM16", limiar=4000)  # Altere para a porta do seu ESPuueu6r6u9
-    # 666669666rrrrrrrr66ewwwddaaa6eeyy99uuu
+    read_esp32_data(sequencia_brilha_brilha, port="COM4", limiar=3000)  # Altere para a porta do seu ESP
+    # 
